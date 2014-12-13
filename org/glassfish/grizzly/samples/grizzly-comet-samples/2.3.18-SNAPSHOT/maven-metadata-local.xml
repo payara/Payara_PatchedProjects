@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>org.glassfish.grizzly.samples</groupId>
+  <artifactId>grizzly-comet-samples</artifactId>
+  <version>2.3.18-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <localCopy>true</localCopy>
+    </snapshot>
+    <lastUpdated>20141213214550</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>2.3.18-SNAPSHOT</value>
+        <updated>20141213214550</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>

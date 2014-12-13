@@ -1,0 +1,7 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Sat Dec 13 21:45:32 GMT 2014
+grizzly-http-server-2.3.18-SNAPSHOT.jar>=
+grizzly-http-server-2.3.18-SNAPSHOT.jar>payara-patched-externals=
+grizzly-http-server-2.3.18-SNAPSHOT.pom>=
+grizzly-http-server-2.3.18-SNAPSHOT.pom>payara-patched-externals=
+grizzly-http-server-2.3.18-SNAPSHOT-sources.jar>=

@@ -1,0 +1,6 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Sat Dec 13 21:45:52 GMT 2014
+connection-pool-2.3.18-SNAPSHOT.jar>=
+connection-pool-2.3.18-SNAPSHOT-tests.jar>=
+connection-pool-2.3.18-SNAPSHOT.pom>=
+connection-pool-2.3.18-SNAPSHOT-sources.jar>=

@@ -1,0 +1,7 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Sat Dec 13 21:45:34 GMT 2014
+grizzly-websockets-2.3.18-SNAPSHOT.jar>payara-patched-externals=
+grizzly-websockets-2.3.18-SNAPSHOT-sources.jar>=
+grizzly-websockets-2.3.18-SNAPSHOT.jar>=
+grizzly-websockets-2.3.18-SNAPSHOT.pom>payara-patched-externals=
+grizzly-websockets-2.3.18-SNAPSHOT.pom>=

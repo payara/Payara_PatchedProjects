@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>net.java</groupId>
+        <artifactId>jvnet-parent</artifactId>
+        <version>3</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.glassfish.grizzly</groupId>
+    <artifactId>grizzly-npn</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+
+    <url>http://grizzly.java.net</url>
+    <issueManagement>
+        <system>JIRA</system>
+        <url>http://java.net/jira/browse/GRIZZLY</url>
+    </issueManagement>
+    <mailingLists>
+        <mailingList>
+            <name>Grizzly Dev List</name>
+            <archive>dev@grizzly.java.net</archive>
+        </mailingList>
+        <mailingList>
+            <name>Grizzly Support List</name>
+            <archive>users@grizzly.java.net</archive>
+        </mailingList>
+    </mailingLists>
+    <developers>
+        <developer>
+            <id>rlubke</id>
+            <name>Ryan Lubke</name>
+            <email>rlubke@java.net</email>
+            <url>http://blogs.sun.com/rlubke</url>
+            <organization>Oracle Corporation</organization>
+            <organizationUrl>http://www.oracle.com</organizationUrl>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git://java.net/grizzly~npn</connection>
+        <developerConnection>
+            scm:git:ssh://${user.name}@git.java.net/grizzly~npn
+        </developerConnection>
+        <url>http://java.net/projects/grizzly/sources/npn/show</url>
+    </scm>
+    <organization>
+        <name>Oracle Corporation</name>
+        <url>http://www.oracle.com</url>
+    </organization>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>1.2</version>
+                <executions>
+                    <execution>
+                        <id>enforce-java</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireProperty>
+                                    <property>java.vm.name</property>
+                                    <message>You must use Open JDK 7 to build
+                                        this module.
+                                    </message>
+                                    <regex>^(OpenJDK).*</regex>
+                                </requireProperty>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <mavenExecutorId>forked-path</mavenExecutorId>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <preparationGoals>clean install</preparationGoals>
+                    <pushChanges>false</pushChanges>
+                    <goals>deploy -Dmaven.test.skip=true</goals>
+                </configuration>
+            </plugin>
+            <plugin>
+                <inherited>true</inherited>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <id>release-sign-artifacts</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <modules>
+        <module>api</module>
+        <module>bootstrap</module>
+        <module>osgi</module>
+    </modules>
+
+</project>
