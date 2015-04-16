@@ -1,0 +1,262 @@
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2009-2013 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://glassfish.dev.java.net/public/CDDL+GPL_1_1.html
+    or packager/legal/LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at packager/legal/LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+&#14;
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>net.java</groupId>
+        <artifactId>jvnet-parent</artifactId>
+        <version>1</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>org.shoal</groupId>
+    <artifactId>shoal</artifactId>
+    <packaging>pom</packaging>
+    <version>1.6.51-SNAPSHOT</version>
+    <name>shoal</name>
+    <url>http://java.net/projects/shoal</url>
+
+    <scm>
+        <connection>scm:svn:svn+ssh://java_re@svn.java.net/shoal~svn/trunk</connection>
+        <developerConnection>scm:svn:svn+ssh://java_re@svn.java.net/shoal~svn/trunk</developerConnection>
+        <url>http://java.net/projects/shoal/sources/svn/show</url>
+    </scm>
+
+    <issueManagement>
+        <system>IssueTracker</system>
+        <url>http://java.net/jira/browse/SHOAL</url>
+    </issueManagement>
+    <mailingLists>
+        <mailingList>
+            <name>Shoal Developer</name>
+            <archive>dev@shoal.java.net</archive>
+        </mailingList>
+    </mailingLists>
+
+    <developers>
+        <developer>
+            <id>mk111283</id>
+            <name>Mahesh Kannan</name>
+            <url>http://forum.java.sun.com/profile.jspa?userID=487934</url>
+            <organization>Oracle Inc.</organization>
+            <roles>
+                <role>lead (For shoal cache)</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>jfialli</id>
+            <name>Joe Fialli</name>
+            <organization>Oracle Inc.</organization>
+            <roles>
+                <role>lead (For Shoal GMS)</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>bbissett</id>
+            <name>Bobby Bissett</name>
+            <url>http://blogs.sun.com/bobby</url>
+            <organization>Oracle Inc.</organization>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>CDDL+GPL</name>
+            <url>http://glassfish.java.net/public/CDDL+GPL.html</url>
+        </license>
+    </licenses>
+
+    <properties>
+        <grizzly.group.id>com.sun.grizzly</grizzly.group.id>
+        <grizzly.version>1.9.36</grizzly.version>
+
+        <grizzly2.group.id>org.glassfish.grizzly</grizzly2.group.id>
+        <grizzly2.version>2.3-rc4</grizzly2.version>
+
+        <junit.group.id>junit</junit.group.id>
+        <junit.version>3.8.1</junit.version>
+
+        <ha.api.version>3.1.8</ha.api.version>
+
+        <!-- Set sourceEncoding property to eliminate warning with
+             "File encoding not set" when running FindBugs plugin.
+             We can define an exclude file when we think we need
+             it.
+        -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <findbugs.exclude />
+	<findbugs.version>2.5.2</findbugs.version>
+	<findbugs.threshold>Low</findbugs.threshold>
+    </properties>
+
+    <modules>
+        <module>gms</module>
+        <module>cache</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <!--
+                    <scope>system</scope>
+                    <systemPath>${java.home}/../lib/tools.jar</systemPath>
+                    -->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${findbugs.version}</version>
+                <configuration>
+                    <skip>${findbugs.skip}</skip>
+                    <threshold>${findbugs.threshold}</threshold>
+                    <findbugsXmlWithMessages>true</findbugsXmlWithMessages>
+                    <excludeFilterFile>
+                        exclude-common.xml,${findbugs.exclude}
+                    </excludeFilterFile>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.glassfish.findbugs</groupId>
+                        <artifactId>findbugs</artifactId>
+                        <version>1.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>                           
+                <artifactId>maven-release-plugin</artifactId>                         
+                <configuration>                                                       
+                    <mavenExecutorId>forked-path</mavenExecutorId>                
+                    <useReleaseProfile>false</useReleaseProfile>                  
+                    <arguments>${release.arguments}</arguments>
+                </configuration>                                                      
+            </plugin>                    
+        </plugins>
+        <!-- explicitly define this extension to resolve invalid checksums -->
+        <!-- See:  http://jira.codehaus.org/browse/MNG-4301 -->
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-webdav</artifactId>
+                <version>1.0-beta-2</version>                                                               
+           </extension>              
+        </extensions>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${findbugs.version}</version>
+                <configuration>
+                    <threshold>${findbugs.threshold}</threshold>
+                    <excludeFilterFile>${findbugs.exclude}</excludeFilterFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>${grizzly.group.id}</groupId>
+                <version>${grizzly.version}</version>
+                <artifactId>grizzly-utils</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>${grizzly.group.id}</groupId>
+                <version>${grizzly.version}</version>
+                <artifactId>grizzly-framework</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>${grizzly.group.id}</groupId>
+                <version>${grizzly.version}</version>
+                <artifactId>grizzly-http</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>${grizzly2.group.id}</groupId>
+                <version>${grizzly2.version}</version>
+                <artifactId>grizzly-framework</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>${junit.group.id}</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.ha</groupId>
+                <artifactId>ha-api</artifactId>
+                <version>${ha.api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>osgi_R4_core</artifactId>
+                <version>1.0</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>glassfish-repo-archive</id>
+            <name>Nexus repository collection for Glassfish</name>
+            <url>http://maven.glassfish.org/content/groups/glassfish</url>
+        </repository>
+    </repositories>
+
+</project>
