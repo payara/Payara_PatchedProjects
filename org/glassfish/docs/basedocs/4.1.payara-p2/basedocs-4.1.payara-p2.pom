@@ -4,6 +4,6 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.glassfish.docs</groupId>
   <artifactId>basedocs</artifactId>
-  <version>4.1-payara-p2</version>
+  <version>4.1.payara-p2</version>
   <packaging>zip</packaging>
 </project>
