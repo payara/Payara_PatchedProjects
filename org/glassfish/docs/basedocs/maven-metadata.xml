@@ -3,13 +3,14 @@
   <groupId>org.glassfish.docs</groupId>
   <artifactId>basedocs</artifactId>
   <versioning>
-    <release>4.1-payara-p3</release>
+    <release>4.1.payara-p3</release>
     <versions>
       <version>basedocs-4.1-payara-p2</version>
       <version>4.1-payara-p2</version>
       <version>4.1.payara-p2</version>
       <version>4.1-payara-p3</version>
+      <version>4.1.payara-p3</version>
     </versions>
-    <lastUpdated>20160422113216</lastUpdated>
+    <lastUpdated>20160422114541</lastUpdated>
   </versioning>
 </metadata>
