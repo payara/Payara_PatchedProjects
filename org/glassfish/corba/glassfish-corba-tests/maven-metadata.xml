@@ -3,11 +3,12 @@
   <groupId>org.glassfish.corba</groupId>
   <artifactId>glassfish-corba-tests</artifactId>
   <versioning>
-    <release>4.0.1.payara-p5</release>
+    <release>4.0.1.payara-p6</release>
     <versions>
       <version>4.0.1.payara-p4</version>
       <version>4.0.1.payara-p5</version>
+      <version>4.0.1.payara-p6</version>
     </versions>
-    <lastUpdated>20170313121641</lastUpdated>
+    <lastUpdated>20170508152920</lastUpdated>
   </versioning>
 </metadata>
