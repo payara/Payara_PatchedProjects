@@ -4,5 +4,5 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.eclipse.persistence</groupId>
   <artifactId>org.eclipse.persistence.asm</artifactId>
-  <version>2.6.4.payara-p{VERSION}</version>
+  <version>2.6.4.payara-p2</version>
 </project>
