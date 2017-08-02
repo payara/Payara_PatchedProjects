@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.glassfish.hk2</groupId>
+  <artifactId>custom-resolver-example</artifactId>
+  <versioning>
+    <versions>
+      <version>2.5.0-b45-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20170802135836</lastUpdated>
+  </versioning>
+</metadata>
