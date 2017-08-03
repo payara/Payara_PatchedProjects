@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>org.glassfish.hk2</groupId>
+  <artifactId>hk2-testng</artifactId>
+  <version>2.5.0-b45-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20170802.135905</timestamp>
+      <buildNumber>2</buildNumber>
+    </snapshot>
+    <lastUpdated>20170802135905</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>2.5.0-b45-20170802.135905-2</value>
+        <updated>20170802135905</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>2.5.0-b45-20170802.135905-2</value>
+        <updated>20170802135905</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <classifier>sources</classifier>
+        <extension>jar</extension>
+        <value>2.5.0-b45-20170802.135905-2</value>
+        <updated>20170802135905</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>
