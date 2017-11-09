@@ -3,11 +3,13 @@
   <groupId>com.sun.xml.ws</groupId>
   <artifactId>release-documentation</artifactId>
   <versioning>
-    <release>2.2.11-b150120.1832.payara-p1</release>
+    <release>2.2.11-b150120.1832.payara-p2</release>
     <versions>
       <version>2.2.11-b150120.1832.payara-p1-docbook</version>
       <version>2.2.11-b150120.1832.payara-p1</version>
+      <version>2.2.11-b150120.1832.payara-p2</version>
+      <version>2.2.11-b150120.1832.payara-p2-dockbook</version>
     </versions>
-    <lastUpdated>20171108154242</lastUpdated>
+    <lastUpdated>20171109115139</lastUpdated>
   </versioning>
 </metadata>
