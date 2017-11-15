@@ -7,6 +7,7 @@
     <versions>
       <version>4.0.1.payara-p1</version>
       <version>4.0.1.payara-p2</version>
+      <version>4.0.1.payara-p3</version>
       <version>4.0.1.payara-p4</version>
       <version>4.0.1.payara-p5</version>
       <version>4.0.1.payara-p6</version>
@@ -16,6 +17,6 @@
       <version>4.0.1.payara-p10</version>
       <version>4.1.1.payara-p1</version>
     </versions>
-    <lastUpdated>20171115180711</lastUpdated>
+    <lastUpdated>20171115182224</lastUpdated>
   </versioning>
 </metadata>
