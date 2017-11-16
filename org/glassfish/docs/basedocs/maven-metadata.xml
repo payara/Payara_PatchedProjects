@@ -5,7 +5,6 @@
   <versioning>
     <release>4.1.payara-p1</release>
     <versions>
-      <version>basedocs-4.1-payara-p2</version>
       <version>4.1.payara-p2</version>
       <version>4.1.payara-p3</version>
       <version>4.1.payara-p1</version>
