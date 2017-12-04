@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   /* * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER. * *
+   Copyright 1997-2008 Sun Microsystems, Inc. All rights reserved. *
+   * Use is subject to license terms. * * Licensed under the Apache
+   License, Version 2.0 (the "License"); * you may not use this file
+   except in compliance with the License. * You may obtain a copy of
+   the License at * http://www.apache.org/licenses/LICENSE-2.0 *
+   Unless required by applicable law or agreed to in writing,
+   software * distributed under the License is distributed on an "AS
+   IS" BASIS, * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+   express or implied. * See the License for the specific language
+   governing permissions and * limitations under the License. */
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>weld-core-parent</artifactId>
+        <groupId>org.jboss.weld</groupId>
+        <version>3.0.1.Final</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.jboss.weld</groupId>
+    <artifactId>weld-osgi-bundle</artifactId>
+    <name>Weld OSGi Bundle</name>
+    <description>Weld runtime packaged as an OSGi bundle</description>
+
+    <developers>
+        <developer>
+            <id>ss141213</id>
+            <name>Sanjeeb Sahoo</name>
+            <url>http://weblogs.dev.java.net/ss141213</url>
+            <organization>Sun Microsystems, Inc.</organization>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <name>Roger Kitain</name>
+            <id>rogerk</id>
+            <organization>Sun Microsystems, Inc.</organization>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <distribution>repo</distribution>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+        </license>
+    </licenses>
+    <url>http://weld.cdi-spec.org</url>
+
+
+    <properties>
+        <osgi.version>${project.version}</osgi.version>
+        <parsedVersion.osgiVersion>${project.version}</parsedVersion.osgiVersion>
+    </properties>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Embed-Dependency>*; scope=compile; inline=true</Embed-Dependency>
+
+                        <_exportcontents>
+                            <!-- Weld API and SPI -->
+                            org.jboss.weld.*.api.*;
+                            org.jboss.weld.*.spi.*;
+                            org.jboss.weld.bootstrap.event;
+                            org.jboss.weld.context.*;
+                            org.jboss.weld.events;
+                            org.jboss.weld.inject;
+                            org.jboss.weld.interceptor;
+
+                            <!-- Probe development tool -->
+                            org.jboss.weld.probe;
+
+                            <!-- Weld modules -->
+                            org.jboss.weld.module.*;
+
+                            <!-- Internal packages -->
+                            org.jboss.weld;
+                            org.jboss.weld.bean;
+                            org.jboss.weld.bean.builtin;
+                            org.jboss.weld.bean.proxy;
+                            org.jboss.weld.bootstrap;
+                            org.jboss.weld.config;
+                            org.jboss.weld.event;
+                            org.jboss.weld.exceptions;
+                            org.jboss.weld.injection;
+                            org.jboss.weld.interceptor.proxy;
+                            org.jboss.weld.interceptor.util.proxy;
+                            org.jboss.weld.logging;
+                            org.jboss.weld.manager;
+                            org.jboss.weld.security;
+                            org.jboss.weld.util;
+                            org.jboss.weld.xml;
+
+                            version=${osgi.version}
+                        </_exportcontents>
+
+                        <Import-Package>
+                            javax.annotation; version="1.1",
+                            javax.el; version=1.0; resolution:=optional,
+                            javax.faces.*; resolution:=optional,
+                            javax.interceptor.*; version="1.0",
+                            javax.persistence; resolution:=optional,
+                            javax.servlet.*; resolution:=optional,
+                            javax.transaction; version="1.1"; resolution:=optional,
+                            javax.validation.*; resolution:=optional,
+                            org.jboss.logging.annotations; resolution:=optional,
+                            sun.*; resolution:=optional,
+                            *;,
+                        </Import-Package>
+
+                        <Private-Package>
+                            !javax.interceptor.*
+                        </Private-Package>
+
+                    </instructions>
+
+                    <!--
+                       Maven uses the output directory (target/classes)
+                       rather than the final bundle, when compiling against
+                       projects in the same reactor (ie. the same build).
+                       Since this jar comprises of classes that come from
+                       some other jar and other modules may depend on this
+                       artifact, we need to unpack.
+                    -->
+                    <unpackBundle>true</unpackBundle>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>osgi-bundle</id>
+                        <goals>
+                            <goal>bundle</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Source jar content -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>src-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>sources</classifier>
+                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                            <outputDirectory>${project.build.directory}/sources</outputDirectory>
+                            <excludeGroupIds>*</excludeGroupIds>
+                            <includeGroupIds>org.jboss.weld,org.jboss.weld.probe</includeGroupIds>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/sources</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <!-- Merge all WeldModule implementations into one file -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+                            </transformers>
+                            
+                            <createSourcesJar>true</createSourcesJar>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            
+                            <artifactSet>
+                                <includes>
+                                    <include>org.jboss.weld:weld-osgi-bundle</include>
+                                    <include>org.jboss.weld.module:weld-ejb</include>
+                                    <include>org.jboss.weld.module:weld-jsf</include>
+                                    <include>org.jboss.weld.module:weld-jta</include>
+                                    <include>org.jboss.weld.module:weld-web</include>
+                                </includes>
+                            </artifactSet>
+                            <filters>
+                                <!-- Include previously created OSGI bundle, but don't take META-INF/services -->
+                                <filter>
+                                    <artifact>org.jboss.weld:weld-osgi-bundle</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/services/**</exclude>
+                                    </excludes>
+                                </filter>
+                                <!-- From modules, we want to only extract META-INF/services and merge them together using transformer -->
+                                <filter>
+                                    <artifact>org.jboss.weld.module:weld-ejb</artifact>
+                                    <includes>
+                                        <include>META-INF/services/**</include>
+                                    </includes>
+                                </filter>
+                                <filter>
+                                    <artifact>org.jboss.weld.module:weld-jta</artifact>
+                                    <includes>
+                                        <include>META-INF/services/**</include>
+                                    </includes>
+                                </filter>
+                                <filter>
+                                    <artifact>org.jboss.weld.module:weld-jsf</artifact>
+                                    <includes>
+                                        <include>META-INF/services/**</include>
+                                    </includes>
+                                </filter>
+                                <filter>
+                                    <artifact>org.jboss.weld.module:weld-web</artifact>
+                                    <includes>
+                                        <include>META-INF/services/**</include>
+                                    </includes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jboss.weld</groupId>
+            <artifactId>weld-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.weld</groupId>
+            <artifactId>weld-core-impl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.weld.module</groupId>
+            <artifactId>weld-ejb</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.weld.module</groupId>
+            <artifactId>weld-jsf</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.weld.module</groupId>
+            <artifactId>weld-jta</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.weld.module</groupId>
+            <artifactId>weld-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.weld</groupId>
+            <artifactId>weld-spi</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.weld.probe</groupId>
+            <artifactId>weld-probe-core</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <!-- SCM and distribution management -->
+    <scm>
+        <connection>scm:git:git@github.com:weld/core.git</connection>
+        <developerConnection>scm:git:git@github.com:weld/core.git</developerConnection>
+        <url>scm:git:git@github.com:weld/core.git</url>
+        <tag>3.0.1.Final</tag>
+    </scm>
+
+</project>
