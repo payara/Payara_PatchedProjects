@@ -5,6 +5,9 @@
   <versioning>
     <release>4.1.1.payara-p1</release>
     <versions>
+      <version>4.0.1.payara-p1</version>    
+      <version>4.0.1.payara-p2</version>
+      <version>4.0.1.payara-p3</version>
       <version>4.0.1.payara-p4</version>
       <version>4.0.1.payara-p5</version>
       <version>4.0.1.payara-p6</version>
