@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.glassfish.hk2</groupId>
+  <artifactId>hk2-inhabitant-generator</artifactId>
+  <versioning>
+    <latest>2.5.0-b61.payara-p1</latest>
+    <release>2.5.0-b61.payara-p1</release>
+    <versions>
+      <version>2.5.0-b61.payara-p1</version>
+    </versions>
+    <lastUpdated>20180201215840</lastUpdated>
+  </versioning>
+</metadata>
