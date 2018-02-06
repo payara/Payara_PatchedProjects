@@ -3,11 +3,12 @@
   <groupId>org.glassfish.hk2</groupId>
   <artifactId>osgiversion-maven-plugin</artifactId>
   <versioning>
-    <latest>2.5.0-b61.payara-p1</latest>
-    <release>2.5.0-b61.payara-p1</release>
+    <latest>2.5.0-b61.payara-p2</latest>
+    <release>2.5.0-b61.payara-p2</release>
     <versions>
       <version>2.5.0-b61.payara-p1</version>
+      <version>2.5.0-b61.payara-p2</version>
     </versions>
-    <lastUpdated>20180201215840</lastUpdated>
+    <lastUpdated>20180205220045</lastUpdated>
   </versioning>
 </metadata>
