@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <plugins>
+    <plugin>
+      <name>consolidated bundle Maven plugin</name>
+      <prefix>consolidatedbundle</prefix>
+      <artifactId>consolidatedbundle-maven-plugin</artifactId>
+    </plugin>
+    <plugin>
+      <name>Inhabitant Generator</name>
+      <prefix>hk2-inhabitant-generator</prefix>
+      <artifactId>hk2-inhabitant-generator</artifactId>
+    </plugin>
+    <plugin>
+      <name>OSGiVersion Maven Plugin</name>
+      <prefix>osgiversion</prefix>
+      <artifactId>osgiversion-maven-plugin</artifactId>
+    </plugin>
+  </plugins>
+</metadata>
