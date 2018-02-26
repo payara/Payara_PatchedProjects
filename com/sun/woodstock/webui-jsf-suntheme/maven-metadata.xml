@@ -11,7 +11,8 @@
       <version>4.0.2.10.payara-p3</version>
       <version>4.0.2.10.payara-p4</version>
       <version>4.0.2.10.payara-p5</version>
+      <version>4.0.2.10.payara-p7</version>
     </versions>
-    <lastUpdated>20171115113002</lastUpdated>
+    <lastUpdated>20180226171600</lastUpdated>
   </versioning>
 </metadata>
