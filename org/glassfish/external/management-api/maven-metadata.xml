@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.glassfish.external</groupId>
+  <artifactId>management-api</artifactId>
+  <versioning>
+    <release>3.2.1-b002.payara-p1</release>
+    <versions>
+      <version>3.2.1-b002.payara-p1</version>
+    </versions>
+    <lastUpdated>20180312142338</lastUpdated>
+  </versioning>
+</metadata>
