@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.glassfish.grizzly.samples</groupId>
+  <artifactId>connection-pool-samples</artifactId>
+  <versioning>
+    <release>2.4.3.payara-p2</release>
+    <versions>
+      <version>2.4.3.payara-p2</version>
+    </versions>
+    <lastUpdated>20180405093313</lastUpdated>
+  </versioning>
+</metadata>
