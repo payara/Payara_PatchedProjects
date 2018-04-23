@@ -4,5 +4,5 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.yubico</groupId>
   <artifactId>yubico-validation-client2</artifactId>
-  <version>3.0.2.payara-p1</version>
+  <version>3.0.2-payara-p1</version>
 </project>
