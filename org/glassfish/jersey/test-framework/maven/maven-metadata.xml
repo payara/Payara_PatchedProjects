@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <plugins>
+    <plugin>
+      <name>jersey-test-framework-maven-container-runner-plugin</name>
+      <prefix>container-runner</prefix>
+      <artifactId>container-runner-maven-plugin</artifactId>
+    </plugin>
+  </plugins>
+</metadata>

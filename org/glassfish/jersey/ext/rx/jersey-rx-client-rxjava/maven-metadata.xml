@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.glassfish.jersey.ext.rx</groupId>
+  <artifactId>jersey-rx-client-rxjava</artifactId>
+  <versioning>
+    <release>2.27-payara-p1</release>
+    <versions>
+      <version>2.27-payara-p1</version>
+    </versions>
+    <lastUpdated>20180501073343</lastUpdated>
+  </versioning>
+</metadata>
