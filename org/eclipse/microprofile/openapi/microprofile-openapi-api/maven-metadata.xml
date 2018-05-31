@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.eclipse.microprofile.openapi</groupId>
+  <artifactId>microprofile-openapi-api</artifactId>
+  <versioning>
+    <release>1.0.1.payara-p1</release>
+    <versions>
+      <version>1.0.1.payara-p1</version>
+    </versions>
+    <lastUpdated>20180521122105</lastUpdated>
+  </versioning>
+</metadata>
