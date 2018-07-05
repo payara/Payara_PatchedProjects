@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>org.omnifaces</groupId>
+		<artifactId>jacc-provider-parent</artifactId>
+		<version>0.2</version>
+		<relativePath>..</relativePath>    
+	</parent>
+
+	<artifactId>jacc-provider-liberty-bundle</artifactId>
+	<packaging>bundle</packaging>
+
+	<name>JACC Provider Liberty OSGi Bundle</name>
+
+	<build>
+		<finalName>testjacc</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>3.5.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Embed-Dependency>*;scope=compile;inline=true</Embed-Dependency>
+						<_exportcontents>*</_exportcontents>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.omnifaces</groupId>
+			<artifactId>jacc-provider</artifactId>
+			<version>0.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm.websphere.appserver.api</groupId>
+			<artifactId>com.ibm.websphere.appserver.api.jacc</artifactId>
+			<version>1.0.20</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.service.component</artifactId>
+			<version>1.3.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.service.component.annotations</artifactId>
+			<version>1.3.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+</project>
