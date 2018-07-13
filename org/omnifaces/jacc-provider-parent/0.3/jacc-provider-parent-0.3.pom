@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"> <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>org.omnifaces</groupId>
+    <artifactId>jacc-provider-parent</artifactId>
+    <version>0.3</version>
+    <packaging>pom</packaging>
+
+    <prerequisites>
+        <maven>3.0.0</maven>
+    </prerequisites>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <url>http://omnifaces.org</url>
+
+	<developers>
+		<developer>
+			<id>arjan.tijms</id>
+			<name>Arjan Tijms</name>
+			<email>arjan.tijms@gmail.com</email>
+		</developer>
+        <developer>
+            <id>ggam</id>
+            <name>Guillermo González de Agüero</name>
+        </developer>
+	</developers>
+	
+	<organization>
+		<name>OmniFaces</name>
+		<url>http://omnifaces.org</url>
+	</organization>
+	<inceptionYear>2016</inceptionYear>
+	
+	<description>
+	</description>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
+	<modules>
+		<module>jacc-provider</module>
+		<module>liberty-bundle</module>
+		<module>tomee-bridge</module>
+	</modules>
+</project>

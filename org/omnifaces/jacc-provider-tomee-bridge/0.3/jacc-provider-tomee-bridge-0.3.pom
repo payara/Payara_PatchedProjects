@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.omnifaces</groupId>
+        <artifactId>jacc-provider-parent</artifactId>
+        <version>0.3</version>
+    </parent>
+    <artifactId>jacc-provider-tomee-bridge</artifactId>
+    <packaging>jar</packaging>
+    
+    <name>JACC Provider TomEE bridge</name>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>apache-tomee</artifactId>
+            <version>7.0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+            <version>8.5.20</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.security.jacc</groupId>
+            <artifactId>javax.security.jacc-api</artifactId>
+            <version>1.5</version>
+        </dependency>
+    </dependencies>
+</project>
