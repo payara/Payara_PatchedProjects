@@ -3,12 +3,13 @@
   <groupId>fish.payara.arquillian</groupId>
   <artifactId>payara-client-ee8</artifactId>
   <versioning>
-    <release>1.0.Beta3-m3</release>
+    <release>1.0.Beta3-m4</release>
     <versions>
       <version>1.0.Beta3-m1</version>
       <version>1.0.Beta3-m2</version>
       <version>1.0.Beta3-m3</version>
+      <version>1.0.Beta3-m4</version>
     </versions>
-    <lastUpdated>20180226191405</lastUpdated>
+    <lastUpdated>20180822134844</lastUpdated>
   </versioning>
 </metadata>
