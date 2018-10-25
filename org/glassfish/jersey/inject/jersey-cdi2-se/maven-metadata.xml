@@ -3,7 +3,7 @@
   <groupId>org.glassfish.jersey.inject</groupId>
   <artifactId>jersey-cdi2-se</artifactId>
   <versioning>
-    <release>2.27.payara-p12</release>
+    <release>2.27.payara-p13</release>
     <versions>
       <version>2.27-payara-p1</version>
       <version>2.27.payara-p2</version>
@@ -17,7 +17,8 @@
       <version>2.27.payara-p10</version>
       <version>2.27.payara-p11</version>
       <version>2.27.payara-p12</version>
+      <version>2.27.payara-p13</version>
     </versions>
-    <lastUpdated>20181019090137</lastUpdated>
+    <lastUpdated>20181025142209</lastUpdated>
   </versioning>
 </metadata>
