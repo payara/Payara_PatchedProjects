@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <parent>
+      <artifactId>weld-se-parent</artifactId>
+      <groupId>org.jboss.weld.se</groupId>
+      <version>3.0.5.Final.payara-p1</version>
+      <relativePath>../pom.xml</relativePath>
+   </parent>
+   <modelVersion>4.0.0</modelVersion>
+   <artifactId>weld-se-tests</artifactId>
+   <packaging>jar</packaging>
+   <name>Weld SE Tests</name>
+   <description>Tests for Weld SE using Arquillian Container SE.</description>
+
+   <url>http://weld.cdi-spec.org</url>
+   <licenses>
+      <license>
+         <name>Apache License, Version 2.0</name>
+         <distribution>repo</distribution>
+         <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+      </license>
+   </licenses>
+
+   <properties>
+       <javax.json.version>1.0.4</javax.json.version>
+   </properties>
+
+   <dependencies>
+
+      <dependency>
+         <groupId>javax.enterprise</groupId>
+         <artifactId>cdi-api</artifactId>
+         <scope>test</scope>
+      </dependency>
+
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <scope>test</scope>
+      </dependency>
+
+      <dependency>
+         <groupId>org.jboss.weld</groupId>
+         <artifactId>weld-core-test-common</artifactId>
+         <scope>test</scope>
+      </dependency>
+
+      <dependency>
+         <groupId>org.jboss.arquillian.junit</groupId>
+         <artifactId>arquillian-junit-container</artifactId>
+         <scope>test</scope>
+      </dependency>
+
+      <dependency>
+         <groupId>org.jboss.arquillian.container</groupId>
+         <artifactId>container-se-managed</artifactId>
+         <scope>test</scope>
+      </dependency>
+
+      <dependency>
+         <groupId>org.jboss.weld.se</groupId>
+         <artifactId>weld-se-shaded</artifactId>
+         <scope>test</scope>
+      </dependency>
+
+      <dependency>
+         <groupId>io.undertow</groupId>
+         <artifactId>undertow-core</artifactId>
+         <scope>test</scope>
+      </dependency>
+
+      <dependency>
+         <groupId>org.glassfish</groupId>
+         <artifactId>javax.json</artifactId>
+         <version>${javax.json.version}</version>
+         <scope>test</scope>
+      </dependency>
+
+      <dependency>
+         <groupId>org.hibernate.javax.persistence</groupId>
+         <artifactId>hibernate-jpa-2.1-api</artifactId>
+         <scope>test</scope>
+      </dependency>
+
+      <dependency>
+         <groupId>org.jboss.shrinkwrap.resolver</groupId>
+         <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+         <scope>test</scope>
+      </dependency>
+
+   </dependencies>
+
+   <build>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+               <execution>
+                  <id>copy-weld-dependencies</id>
+                  <phase>test-compile</phase>
+                  <goals>
+                     <goal>copy-dependencies</goal>
+                  </goals>
+                  <configuration>
+                     <stripVersion>true</stripVersion>
+                     <overWriteReleases>true</overWriteReleases>
+                     <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                     <includeGroupIds>org.jboss.weld.se,org.glassfish,org.hibernate.javax.persistence</includeGroupIds>
+                  </configuration>
+               </execution>
+            </executions>
+         </plugin>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+               <systemProperties>
+                  <arquillian.launch>weld-se</arquillian.launch>
+                  <libPath>${project.build.outputDirectory}</libPath>
+                  <jacoco.agent>${jacoco.agent}</jacoco.agent>
+                  <weld.se.debug>false</weld.se.debug>
+                  <surefire.plugin.jdk9.args>${surefire.plugin.jdk9.args}</surefire.plugin.jdk9.args>
+               </systemProperties>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+   
+   <profiles>
+      <profile>
+         <id>jacoco</id>
+         <activation>
+            <activeByDefault>false</activeByDefault>
+            <property>
+               <name>jacoco</name>
+            </property>
+         </activation>
+         <build>
+            <plugins>
+               <plugin>
+                  <groupId>org.jacoco</groupId>
+                  <artifactId>jacoco-maven-plugin</artifactId>
+                  <configuration>
+                     <excludes>
+                        <exclude>org.jboss.weld.environment.se.test.*</exclude>
+                     </excludes>
+                     <propertyName>jacoco.agent</propertyName>
+                  </configuration>
+                  <executions>
+                     <execution>
+                        <goals>
+                           <goal>prepare-agent</goal>
+                        </goals>
+                     </execution>
+                  </executions>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+   </profiles>
+
+</project>
