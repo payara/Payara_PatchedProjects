@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.apache.felix</groupId>
+  <artifactId>org.apache.felix.fileinstall</artifactId>
+  <versioning>
+    <release>3.6.4.payara-p1</release>
+    <versions>
+      <version>3.6.4.payara-p1</version>
+    </versions>
+    <lastUpdated>20181113121609</lastUpdated>
+  </versioning>
+</metadata>
