@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <plugins>
+    <plugin>
+      <name>Command Security Plug-in</name>
+      <prefix>command-security</prefix>
+      <artifactId>command-security-maven-plugin</artifactId>
+    </plugin>
+  </plugins>
+</metadata>
