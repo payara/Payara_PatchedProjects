@@ -3,11 +3,12 @@
   <groupId>org.hibernate</groupId>
   <artifactId>hibernate-validator</artifactId>
   <versioning>
-    <release>5.2.4.Final.payara-p1</release>
+    <release>5.4.2.Final</release>
     <versions>
       <version>5.2.4.Final</version>
       <version>5.2.4.Final.payara-p1</version>
+      <version>5.4.2.Final</version>
     </versions>
-    <lastUpdated>20171116152833</lastUpdated>
+    <lastUpdated>20190203200235</lastUpdated>
   </versioning>
 </metadata>
