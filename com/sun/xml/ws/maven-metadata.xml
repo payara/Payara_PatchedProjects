@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <plugins>
+    <plugin>
+      <name>Maven JAXWS 2.x Plugin</name>
+      <prefix>jaxws</prefix>
+      <artifactId>jaxws-maven-plugin</artifactId>
+    </plugin>
+  </plugins>
+</metadata>
