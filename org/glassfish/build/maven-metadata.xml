@@ -7,4 +7,11 @@
       <artifactId>command-security-maven-plugin</artifactId>
     </plugin>
   </plugins>
+  <versioning>
+    <release>1.0.10.payara-p1</release>
+    <versions>
+      <version>3.2.20.payara-p1</version>
+      <version>1.0.10.payara-p1</version>
+    </versions>
+  </versioning>
 </metadata>

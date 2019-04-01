@@ -5,12 +5,12 @@
   <versioning>
     <release>ECLIPSELINK_VERSION.payara-p1</release>
     <versions>
-      <version>2.6.4.payara-p1</version>
-      <version>2.6.2.payara-p3</version>
-      <version>2.6.2.payara-p2</version>
       <version>2.6.2.payara-p1</version>
+      <version>2.6.2.payara-p2</version>
+      <version>2.6.2.payara-p3</version>
       <version>2.6.2.payara-p4</version>
       <version>2.6.3.payara-p1</version>
+      <version>2.6.4.payara-p1</version>
       <version>2.6.4.payara-p2</version>
       <version>ECLIPSELINK_VERSION.payara-p1</version>
     </versions>

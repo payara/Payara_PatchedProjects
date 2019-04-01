@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><metadata>
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
   <groupId>org.eclipse.persistence</groupId>
   <artifactId>org.eclipse.persistence.extension</artifactId>
   <version>2.7.4.payara-p2</version>
   <versioning>
+    <release>2.7.4.payara-p2</release>
     <versions>
       <version>2.7.4.payara-p2</version>
     </versions>

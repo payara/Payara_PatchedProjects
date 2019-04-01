@@ -6,19 +6,19 @@
     <release>4.0.2.10.payara-p15</release>
     <versions>
       <version>4.0.2.10-payara-p1</version>
-      <version>4.0.2.10.payara-p1</version>
       <version>4.0.2.10.payara-p2</version>
       <version>4.0.2.10.payara-p3</version>
       <version>4.0.2.10.payara-p4</version>
       <version>4.0.2.10.payara-p5</version>
       <version>4.0.2.10.payara-p6</version>
+      <version>4.0.2.10.payara-p1</version>
       <version>4.0.2.10.payara-p7</version>
       <version>4.0.2.10.payara-p8</version>
       <version>4.0.2.10.payara-p10</version>
       <version>4.0.2.10.payara-p11</version>
       <version>4.0.2.10.payara-p12</version>
-      <version>4.0.2.10.payara-p13</version>
       <version>4.0.2.10.payara4-p7</version>
+      <version>4.0.2.10.payara-p13</version>
       <version>4.0.2.10.payara-p14</version>
       <version>4.0.2.10.payara-p15</version>
     </versions>

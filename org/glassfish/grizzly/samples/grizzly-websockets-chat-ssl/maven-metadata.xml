@@ -5,6 +5,7 @@
   <versioning>
     <release>2.3.31.payara-p2</release>
     <versions>
+      <version>2.3.18-SNAPSHOT</version>
       <version>2.3.31.payara-p1</version>
       <version>2.3.31.payara-p2</version>
     </versions>

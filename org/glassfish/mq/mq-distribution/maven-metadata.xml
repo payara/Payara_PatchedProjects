@@ -3,7 +3,7 @@
   <groupId>org.glassfish.mq</groupId>
   <artifactId>mq-distribution</artifactId>
   <versioning>
-    <release>5.1.1.final.payara-p3</release>
+    <release>5.1.1.final.payara-p4</release>
     <versions>
       <version>5.1.1-b02.payara-p1</version>
       <version>5.1.1.final-payara-p1</version>
@@ -13,7 +13,7 @@
       <version>5.1.1-b02.payara-p2</version>
       <version>5.1.1-b02.payara-p3</version>
       <version>5.1.1.final.payara-p3</version>
-      <version>5.1.1.final.payara-p3</version>
+      <version>5.1.1.final.payara-p4</version>
     </versions>
     <lastUpdated>20180702094720</lastUpdated>
   </versioning>
