@@ -17,4 +17,14 @@
       <artifactId>osgiversion-maven-plugin</artifactId>
     </plugin>
   </plugins>
+  <versioning>
+    <release>2.5.0.payara-p1</release>
+    <versions>
+      <version>2.5.0-b45-SNAPSHOT</version>
+      <version>2.5.0-b61.payara-p1</version>
+      <version>2.5.0-b61.payara-p2</version>
+      <version>2.5.0-b61.payara-p3</version>
+      <version>2.5.0.payara-p1</version>
+    </versions>
+  </versioning>
 </metadata>
