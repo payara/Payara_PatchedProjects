@@ -2,6 +2,7 @@
 <!--
 
     Copyright (c) 2011, 2019 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2019 Payara Foundation and/or its affiliates.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -27,6 +28,7 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
@@ -41,7 +43,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>2.1</version>
                 <configuration>
                     <includePom>true</includePom>
                 </configuration>
@@ -60,11 +61,15 @@
                 <configuration>
                     <doclint>none</doclint>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                   </execution>
+               </executions>
            </plugin>
-           <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-            </plugin> 
          </plugins>
     </build>
 
