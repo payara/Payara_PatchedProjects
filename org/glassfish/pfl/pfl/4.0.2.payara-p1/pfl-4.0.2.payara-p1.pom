@@ -2,6 +2,7 @@
 <!--
 
     Copyright (c) 2011, 2019 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2019 Payara Foundation and/or its affiliates.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -81,6 +82,9 @@
 
         <!-- A directory for unit tests, allowing testing against MR classes. -->
         <combined.classes.dir>${project.build.directory}/combined-classes</combined.classes.dir>
+        <jdkVersion>1.7</jdkVersion>
+        <maven-bundle-plugin.version>4.1.0</maven-bundle-plugin.version>
+        <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
     </properties>
     
     <modules>
@@ -110,11 +114,6 @@
                     <version>3.0.0-M2</version>
                 </plugin>               
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-gpg-plugin</artifactId>
-                    <version>1.6</version>
-                </plugin>
-                <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
                     <version>3.4.0</version>
@@ -122,8 +121,24 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.0.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>${maven-bundle-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.8</version>
+                    <version>${maven-javadoc-plugin.version}</version>
+                    <configuration>
+                        <failOnError>false</failOnError>
+                        <additionalOptions>
+                            <additionalOption>${javadoc.options}</additionalOption>
+                        </additionalOptions>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
@@ -202,7 +217,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.0.0-M1</version>
+                <version>${maven-javadoc-plugin.version}</version>
             </plugin>
 
             <!-- add the legal files to the jar -->
@@ -237,7 +252,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
+                <version>3.1.1</version>
                 <configuration>
                     <archive>
                         <manifestEntries>
@@ -262,7 +277,7 @@
             <!-- prevent the site plugin from deploying to the scm url -->
             <plugin>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.3</version>
+                <version>3.7.1</version>
                 <executions>
                     <execution>
                         <id>stage-for-scm-publish</id>
@@ -367,12 +382,20 @@
 
     <profiles>
 
+        <!-- ignore javadoc lint checks, enabled by default in JDK 1.8 -->
+        <profile>
+            <id>disable-java8-doclint</id>
+            <activation>
+                <jdk>[1.8,)</jdk>
+            </activation>
+            <properties>
+                <javadoc.options>-Xdoclint:none</javadoc.options>
+            </properties>
+        </profile>
+
         <profile>
             <!-- processing during site generation -->
             <id>site</id>
-            <properties>
-                <additionalparam />
-            </properties>
             <build>
                 <plugins>
                     <!-- build javadoc with the configured jdk version to ensure cross-module consistency -->
