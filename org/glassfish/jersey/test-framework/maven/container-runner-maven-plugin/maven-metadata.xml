@@ -3,8 +3,8 @@
   <groupId>org.glassfish.jersey.test-framework.maven</groupId>
   <artifactId>container-runner-maven-plugin</artifactId>
   <versioning>
-    <latest>2.29.payara-p1</latest>
-    <release>2.29.payara-p1</release>
+    <latest>2.29.payara-p2</latest>
+    <release>2.29.payara-p2</release>
     <versions>
       <version>2.27-payara-p1</version>
       <version>2.27.payara-p2</version>
@@ -29,7 +29,8 @@
       <version>2.27.payara-p15</version>
       <version>2.25.1.payara-p7</version>
       <version>2.29.payara-p1</version>
+      <version>2.29.payara-p2</version>
     </versions>
-    <lastUpdated>20190423144911</lastUpdated>
+    <lastUpdated>20190515132427</lastUpdated>
   </versioning>
 </metadata>
