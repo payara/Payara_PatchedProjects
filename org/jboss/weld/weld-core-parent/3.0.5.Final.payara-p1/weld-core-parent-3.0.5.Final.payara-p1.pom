@@ -1,0 +1,817 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>weld-core-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>3.0.5.Final.payara-p1</version>
+
+    <name>Weld Parent</name>
+
+    <parent>
+        <groupId>org.jboss.weld</groupId>
+        <artifactId>weld-parent</artifactId>
+        <version>39</version>
+    </parent>
+
+    <prerequisites>
+        <maven>3.0</maven>
+    </prerequisites>
+
+
+    <!-- Minimal metadata -->
+    <description>The build aggregator for Weld, which takes care of calling the modules which make up Weld</description>
+
+
+    <properties>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <build.timestamp>${maven.build.timestamp}</build.timestamp>
+        <!-- Travis CI build workaround -->
+        <travis.surefire.argLine>-Xmx1024m</travis.surefire.argLine>
+
+        <!-- Only initialized in JDK 9 profile to provide extra CMD args to surefire -->
+        <surefire.plugin.jdk9.args />
+        <jax.artifacts.version>2.3.0</jax.artifacts.version>
+
+        <!-- A property which is handed over to WFLY container through Arquillian, allows to pass on JVM options -->
+        <additional.vm.args />
+        <!-- A property which is handed over to WFLY container through Arquillian, allows to configure server-specific options -->
+        <additional.jboss.args />
+
+        <manifest.specification.title>JSR-365 Contexts and Dependency Injection for Java</manifest.specification.title>
+        <manifest.specification.version>2.0</manifest.specification.version>
+
+        <!-- Dependency versions. KEEP IN ALPHABETICAL ORDER -->
+        <apache.bcel.version>6.2</apache.bcel.version>
+        <apache.httpclient.version>3.1</apache.httpclient.version>
+        <arquillian.version>1.4.0.Final</arquillian.version>
+        <arquillian.drone.version>2.0.0.Final</arquillian.drone.version>
+        <arquillian.graphene.version>2.1.0.CR1</arquillian.graphene.version>
+        <arquillian.weld.version>2.0.0.Beta4</arquillian.weld.version>
+        <arquillian.se.container.version>1.0.1.Final</arquillian.se.container.version>
+        <arquillian.tomcat.version>1.0.0.CR8</arquillian.tomcat.version>
+        <arquillian.jetty.version>1.0.0.CR3</arquillian.jetty.version>
+        <arquillian.glassfish.version>1.0.0.CR1</arquillian.glassfish.version>
+        <atinject.tck.version>1</atinject.tck.version>
+        <!-- Might be used to override the version declared in weld-parent -->
+        <!-- build.config.version>9</build.config.version-->
+        <bundle.plugin.version>2.5.3</bundle.plugin.version>
+        <cdi.tck-1-2.version>1.2.10.Final</cdi.tck-1-2.version>
+        <cdi.tck-2-0.version>2.0.5.SP1</cdi.tck-2-0.version>
+        <classfilewriter.version>1.2.3.Final</classfilewriter.version>
+        <contiperf.version>1.06</contiperf.version>
+        <spotbugs-maven-plugin.version>3.1.1</spotbugs-maven-plugin.version>
+        <spotbugs-annotations-version>3.1.1</spotbugs-annotations-version>
+        <glassfish.el.version>2.1.2-b04</glassfish.el.version>
+        <groovy.version>2.4.15</groovy.version>
+        <htmlunit.version>2.20</htmlunit.version>
+        <jacoco.version>0.7.9</jacoco.version>
+        <jandex.version>2.0.3.Final</jandex.version>
+        <javax.activation.version>1.1</javax.activation.version>
+        <javax.el.version>3.0.0</javax.el.version>
+        <jboss.jms.api.version>1.0.0.Final</jboss.jms.api.version>
+        <jboss.jsf.api.version>2.2.4</jboss.jsf.api.version>
+        <jboss.logging.version>3.2.1.Final</jboss.logging.version>
+        <jboss.logging.processor.version>2.0.1.Final</jboss.logging.processor.version>
+        <jboss.logmanager.version>1.2.2.GA</jboss.logmanager.version>
+        <jboss.spec.el-api.version>1.0.7.Final</jboss.spec.el-api.version>
+        <jsf.impl.version>2.2.10</jsf.impl.version>
+        <jsp.api.version>2.2</jsp.api.version>
+        <jstl.api.version>1.2</jstl.api.version>
+        <junit.version>4.12</junit.version>
+        <log4j.version>1.2.17</log4j.version>
+        <selenium.maven.plugin.version>1.0.1</selenium.maven.plugin.version>
+        <shade.plugin.version>2.3</shade.plugin.version>
+        <shrinkwrap.version>1.1.3</shrinkwrap.version>
+        <shrinkwrap.descriptors.version>1.1.0-beta-1</shrinkwrap.descriptors.version>
+        <shrinkwrap.resolver.version>2.2.6</shrinkwrap.resolver.version>
+        <testng.version>6.14.3</testng.version>
+        <testng.jcommander.version>1.74</testng.jcommander.version>
+        <weld.api.version>3.0.SP4</weld.api.version>
+        <weld.logging.tools.version>1.0.2.Final</weld.logging.tools.version>
+        <wildfly.arquillian.version>2.1.0.Final</wildfly.arquillian.version>
+        <!--Temportary version override, once alligned in WFLY-Arq adapter, we can remove this-->
+        <jboss.marshalling.override>2.0.5.Final</jboss.marshalling.override>
+    </properties>
+
+    <modules>
+        <module>impl</module>
+        <module>modules/ejb</module>
+        <module>modules/jsf</module>
+        <module>modules/jta</module>
+        <module>modules/web</module>
+        <module>probe</module>
+        <module>bom</module>
+    </modules>
+
+    <!-- Dependency management. KEEP IN ALPHABETICAL ORDER -->
+    <dependencyManagement>
+
+        <dependencies>
+            <!--Optional BCEL classes dependency-->
+            <dependency>
+                <groupId>org.apache.bcel</groupId>
+                <artifactId>bcel</artifactId>
+                <version>${apache.bcel.version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-all</artifactId>
+                <version>${groovy.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>${apache.httpclient.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.activation</groupId>
+                <artifactId>activation</artifactId>
+                <version>${javax.activation.version}</version>
+            </dependency>
+
+            <!-- This version of EL 3.0 API is not JDK 6 compatible -->
+            <dependency>
+                <groupId>javax.el</groupId>
+                <artifactId>javax.el-api</artifactId>
+                <version>${javax.el.version}</version>
+            </dependency>
+
+            <!-- This artifact bundles EL API and impl and is not JDK 6 compatible -->
+            <dependency>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.el</artifactId>
+                <version>${javax.el.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.spec.javax.el</groupId>
+                <artifactId>jboss-el-api_3.0_spec</artifactId>
+                <version>${jboss.spec.el-api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.spec.javax.faces</groupId>
+                <artifactId>jboss-jsf-api_2.2_spec</artifactId>
+                <version>${jboss.jsf.api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.spec.javax.jms</groupId>
+                <artifactId>jboss-jms-api_1.1_spec</artifactId>
+                <version>${jboss.jms.api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging-processor</artifactId>
+                <version>${jboss.logging.processor.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging</artifactId>
+                <version>${jboss.logging.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.logmanager</groupId>
+                <artifactId>jboss-logmanager</artifactId>
+                <version>${jboss.logmanager.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.sourceforge.htmlunit</groupId>
+                <artifactId>htmlunit</artifactId>
+                <version>${htmlunit.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject-tck</artifactId>
+                <version>${atinject.tck.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.databene</groupId>
+                <artifactId>contiperf</artifactId>
+                <version>${contiperf.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.glassfish.web</groupId>
+                <artifactId>el-impl</artifactId>
+                <version>${glassfish.el.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.classfilewriter</groupId>
+                <artifactId>jboss-classfilewriter</artifactId>
+                <version>${classfilewriter.version}</version>
+            </dependency>
+
+            <!--Keep this Arq. BOM as first of all Arquillian dependencies in order to make it fetch correct versions!-->
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>${arquillian.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.container</groupId>
+                <artifactId>arquillian-container-spi</artifactId>
+                <version>${arquillian.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.junit</groupId>
+                <artifactId>arquillian-junit-container</artifactId>
+                <version>${arquillian.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.test</groupId>
+                <artifactId>arquillian-test-impl-base</artifactId>
+                <version>${arquillian.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.container</groupId>
+                <artifactId>arquillian-container-test-impl-base</artifactId>
+                <version>${arquillian.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.container</groupId>
+                <artifactId>arquillian-container-test-spi</artifactId>
+                <version>${arquillian.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.testenricher</groupId>
+                <artifactId>arquillian-testenricher-cdi</artifactId>
+                <version>${arquillian.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.container</groupId>
+                <artifactId>arquillian-weld-embedded</artifactId>
+                <version>${arquillian.weld.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.container</groupId>
+                <artifactId>arquillian-tomcat-embedded-7</artifactId>
+                <version>${arquillian.tomcat.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.container</groupId>
+                <artifactId>arquillian-tomcat-embedded-8</artifactId>
+                <version>${arquillian.tomcat.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.container</groupId>
+                <artifactId>arquillian-jetty-embedded-7</artifactId>
+                <version>${arquillian.jetty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.container</groupId>
+                <artifactId>arquillian-jetty-embedded-9</artifactId>
+                <version>${arquillian.jetty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.container</groupId>
+                <artifactId>arquillian-glassfish-embedded-3.1</artifactId>
+                <version>${arquillian.glassfish.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.container</groupId>
+                <artifactId>arquillian-glassfish-remote-3.1</artifactId>
+                <version>${arquillian.glassfish.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.arquillian.container</groupId>
+                <artifactId>container-se-managed</artifactId>
+                <version>${arquillian.se.container.version}</version>
+            </dependency>
+            <!-- WildFly -->
+            <dependency>
+                <groupId>org.wildfly.arquillian</groupId>
+                <artifactId>wildfly-arquillian-container-managed</artifactId>
+                <version>${wildfly.arquillian.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.arquillian</groupId>
+                <artifactId>wildfly-arquillian-protocol-jmx</artifactId>
+                <version>${wildfly.arquillian.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.arquillian</groupId>
+                <artifactId>wildfly-arquillian-common</artifactId>
+                <version>${wildfly.arquillian.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.jboss.logmanager</groupId>
+                        <artifactId>log4j-jboss-logmanager</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld</groupId>
+                <artifactId>weld-api-bom</artifactId>
+                <version>${weld.api.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+            <!-- Import managed dependencies from API parent -->
+            <dependency>
+                <groupId>org.jboss.weld</groupId>
+                <artifactId>weld-api-parent</artifactId>
+                <version>${weld.api.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld</groupId>
+                <artifactId>weld-core-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld.module</groupId>
+                <artifactId>weld-jsf</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld.module</groupId>
+                <artifactId>weld-jta</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld.module</groupId>
+                <artifactId>weld-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld.module</groupId>
+                <artifactId>weld-ejb</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld</groupId>
+                <artifactId>weld-core-test-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld</groupId>
+                <artifactId>weld-core-test</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld</groupId>
+                <artifactId>weld-porting-package-tck</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld.environment</groupId>
+                <artifactId>weld-environment-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld.servlet</groupId>
+                <artifactId>weld-servlet-shaded</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld.servlet</groupId>
+                <artifactId>weld-servlet-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld.se</groupId>
+                <artifactId>weld-se-shaded</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld.se</groupId>
+                <artifactId>weld-se-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld.probe</groupId>
+                <artifactId>weld-probe-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.shrinkwrap</groupId>
+                <artifactId>shrinkwrap-api</artifactId>
+                <version>${shrinkwrap.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.shrinkwrap</groupId>
+                <artifactId>shrinkwrap-spi</artifactId>
+                <version>${shrinkwrap.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.shrinkwrap</groupId>
+                <artifactId>shrinkwrap-impl-base</artifactId>
+                <version>${shrinkwrap.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.shrinkwrap.descriptors</groupId>
+                <artifactId>shrinkwrap-descriptors-impl</artifactId>
+                <version>${shrinkwrap.descriptors.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.shrinkwrap.resolver</groupId>
+                <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+                <version>${shrinkwrap.resolver.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>${testng.version}</version>
+            </dependency>
+
+            <!--Can be removed once TestNG dependency contains JCommander 1.74 or newer-->
+            <dependency>
+                <groupId>com.beust</groupId>
+                <artifactId>jcommander</artifactId>
+                <version>${testng.jcommander.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>${jstl.api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>${jsp.api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jandex</artifactId>
+                <version>${jandex.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sun.faces</groupId>
+                <artifactId>jsf-impl</artifactId>
+                <version>${jsf.impl.version}</version>
+            </dependency>
+
+            <!-- spotbugs annotations -->
+            <dependency>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-annotations</artifactId>
+                <version>${spotbugs-annotations-version}</version>
+                <optional>true</optional>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+
+                <plugin>
+                    <groupId>org.codehaus.cargo</groupId>
+                    <artifactId>cargo-maven2-plugin</artifactId>
+                    <version>${cargo.maven2.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.spotbugs</groupId>
+                    <artifactId>spotbugs-maven-plugin</artifactId>
+                    <version>${spotbugs-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>selenium-maven-plugin</artifactId>
+                    <version>${selenium.maven.plugin.version}</version>
+                </plugin>
+                <!-- So m2e doesn't throw errors for features it doesn't
+                support in the POM -->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-checkstyle-plugin</artifactId>
+                                        <versionRange>[1.0.0,)</versionRange>
+                                        <goals>
+                                            <goal>checkstyle</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+            <!-- m2e Config -->
+            <plugin>
+                <groupId>org.eclipse.m2e</groupId>
+                <artifactId>lifecycle-mapping</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+
+    <!-- SCM and distribution management -->
+    <scm>
+        <connection>scm:git:git@github.com:weld/core.git</connection>
+        <developerConnection>scm:git:git@github.com:weld/core.git</developerConnection>
+        <url>scm:git:git@github.com:weld/core.git</url>
+        <tag>3.0.5.Final</tag>
+    </scm>
+
+
+    <profiles>
+        <profile>
+            <id>update-jboss-as</id>
+            <activation>
+                <property>
+                    <name>release</name>
+                </property>
+            </activation>
+            <modules>
+                <module>jboss-as</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>tests</id>
+            <activation>
+                <property>
+                    <name>weld.default.build</name>
+                    <value>!false</value>
+                </property>
+            </activation>
+            <modules>
+                <module>porting-package</module>
+                <module>tests-common</module>
+                <module>tests</module>
+                <module>tests-arquillian</module>
+                <module>inject-tck-runner</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>tck</id>
+            <activation>
+                <property>
+                    <name>weld.default.build.cditck</name>
+                    <value>!false</value>
+                </property>
+            </activation>
+            <modules>
+                <module>jboss-tck-runner</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>examples</id>
+            <activation>
+                <property>
+                    <name>release</name>
+                </property>
+            </activation>
+            <modules>
+                <module>examples</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>docs</id>
+            <activation>
+                <property>
+                    <name>release</name>
+                </property>
+            </activation>
+            <modules>
+                <module>docs/reference</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>bom</id>
+            <activation>
+                <property>
+                    <name>release</name>
+                </property>
+            </activation>
+            <modules>
+                <module>bom</module>
+            </modules>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>bom-verify-weld-api</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <tasks>
+                                        <property name="weld.api.search.string" value="&lt;weld.api.bom.version&gt;${weld.api.version}&lt;/weld.api.bom.version&gt;" />
+                                        <property name="bom.pom.file.path" value="bom${file.separator}pom.xml" />
+                                        <echo message="Verify Weld API used in ${bom.pom.file.path} matches ${weld.api.version}" />
+                                        <fail message="Invalid Weld API version used in BOM pom.xml">
+                                            <condition>
+                                                <not>
+                                                    <resourcecontains resource="${bom.pom.file.path}" substring="${weld.api.search.string}" />
+                                                </not>
+                                            </condition>
+                                        </fail>
+                                    </tasks>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>environments</id>
+            <activation>
+                <property>
+                    <name>weld.default.build</name>
+                    <value>!false</value>
+                </property>
+            </activation>
+            <modules>
+                <module>environments/common</module>
+                <module>environments/se</module>
+                <module>environments/servlet</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>bundles</id>
+            <activation>
+                <property>
+                    <name>release</name>
+                </property>
+            </activation>
+            <modules>
+                <module>bundles/osgi</module>
+            </modules>
+        </profile>
+        <profile>
+            <!-- NOTE: groovy compilation must be disabled if using this profile -->
+            <id>log-msg-idx</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <property>
+                    <name>log-msg-idx</name>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jboss.weld</groupId>
+                    <artifactId>weld-logging-tools</artifactId>
+                    <version>${weld.logging.tools.version}</version>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <!-- We have to specify the processors to skip org.jboss.logging.processor.apt.LoggingToolsProcessor -->
+                            <annotationProcessors>
+                                <annotationProcessor>org.jboss.weld.logging.LogMessageIndexGenerator</annotationProcessor>
+                            </annotationProcessors>
+                            <compilerArguments>
+                                <AprojectVersion>${project.version}</AprojectVersion>
+                                <Aartifact>${project.groupId}:${project.artifactId}</Aartifact>
+                            </compilerArguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <!-- Following profile is automatically triggered in Windows environment and allows to handle behaviour/problems
+            specific for this OS. For instance excluding a test here will skip its execution on Windows. -->
+            <activation>
+                <os>
+                    <family>Windows</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/ShutdownHookTest.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <!-- Auto-activated profile for any JDK 9 or newer -->
+            <!-- Should contain all JDK 9+ related versions and/or test setup such as illegal-access=deny -->
+            <id>jdk9+</id>
+            <activation>
+                <jdk>(9,)</jdk>
+            </activation>
+            <properties>
+                <!--In the future we will want to test with illegal access denied. As of WFLY 13 Alpha, it is not yet possible-->
+                <!--Once working, set "surefire.plugin.jdk9.args" to "[double-hyphen]illegal-access=deny"-->
+            </properties>
+        </profile>
+    </profiles>
+
+    <!--This repository can be removed once TestNG 6.14.3 or newer and JCommander 1.74 or newer appear in Maven Central-->
+    <!--For some reason they keep most releases on bintray and we need these versions for JDK 10-->
+    <repositories>
+        <repository>
+            <id>jcenter</id>
+            <name>jcenter</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
+</project>

@@ -7,8 +7,8 @@
     <versions>
       <version>1.0.1-SNAPSHOT</version>
       <version>1.0.1-payara-p1</version>
-      <version>1.0.1.payara-p1</version>
       <version>1.0.1.payara-p2</version>
+      <version>1.0.1.payara-p1</version>
       <version>1.0.3.payara-p1</version>
       <version>1.0.3.payara-p2</version>
       <version>1.0.3.payara-p3</version>
