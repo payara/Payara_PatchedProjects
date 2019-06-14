@@ -56,7 +56,7 @@
     </developers>
 
     <properties>
-        <jaxws.ri.version>2.3.2</jaxws.ri.version>
+        <jaxws.ri.version>2.3.2.payara-p2</jaxws.ri.version>
         <jaxws.maven.plugin.version>2.3.2</jaxws.maven.plugin.version>
     </properties>
 

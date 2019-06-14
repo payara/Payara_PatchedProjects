@@ -2,7 +2,6 @@
 <!--
 
     Copyright (c) 1997, 2018 Oracle and/or its affiliates. All rights reserved.
-    Copyright (c) 2019 Payara Foundation and/or its affiliates.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -216,8 +215,6 @@
                             org.apache.jcp.xml.dsig.*;version=${santuario.version},
                             org.apache.xml.security;version=${santuario.version},
                             org.apache.xml.security.*;version=${santuario.version}
-                            com.sun.org.apache.xml.internal.resolver;version=${resolver.version},
-                            com.sun.org.apache.xml.internal.resolver.*;version=${resolver.version}
                         </Export-Package>
                         <Import-Package>
                             javax.activation;version=!,
@@ -326,10 +323,6 @@
             <groupId>jakarta.xml.registry</groupId>
             <artifactId>jakarta.xml.registry-api</artifactId>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.org.apache.xml.internal</groupId>
-            <artifactId>resolver</artifactId>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
