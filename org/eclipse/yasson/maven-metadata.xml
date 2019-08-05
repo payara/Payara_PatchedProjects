@@ -3,11 +3,12 @@
   <groupId>org.eclipse</groupId>
   <artifactId>yasson</artifactId>
   <versioning>
-    <release>1.0.4.payara-p1</release>
+    <release>1.0.4.payara-p2</release>
     <versions>
       <version>1.0.2-SNAPSHOT-07-05-2018.payara-p1</version>
       <version>1.0.4.payara-p1</version>
+      <version>1.0.4.payara-p2</version>
     </versions>
-    <lastUpdated>20190510160227</lastUpdated>
+    <lastUpdated>20190805102440</lastUpdated>
   </versioning>
 </metadata>
