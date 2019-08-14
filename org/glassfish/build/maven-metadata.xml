@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-  <plugins>
-    <plugin>
-      <name>Command Security Plug-in</name>
-      <prefix>command-security</prefix>
-      <artifactId>command-security-maven-plugin</artifactId>
-    </plugin>
-  </plugins>
   <versioning>
     <release>1.0.10.payara-p1</release>
     <versions>
@@ -14,4 +7,16 @@
       <version>1.0.10.payara-p1</version>
     </versions>
   </versioning>
+  <plugins>
+    <plugin>
+      <name>Command Security Plug-in</name>
+      <prefix>command-security</prefix>
+      <artifactId>command-security-maven-plugin</artifactId>
+    </plugin>
+    <plugin>
+      <name>PayaraBuild Maven Plugin</name>
+      <prefix>glassfishbuild</prefix>
+      <artifactId>glassfishbuild-maven-plugin</artifactId>
+    </plugin>
+  </plugins>
 </metadata>
