@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri May 29 17:35:20 BST 2020
+webui-jsf-4.0.2.10.payara-p16.jar>payara-patched-externals=
+webui-jsf-4.0.2.10.payara-p16.pom>payara-patched-externals=
