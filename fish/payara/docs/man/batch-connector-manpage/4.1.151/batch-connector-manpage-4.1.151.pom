@@ -6,5 +6,4 @@
   <artifactId>batch-connector-manpage</artifactId>
   <version>4.1.151</version>
   <packaging>zip</packaging>
-  <description>POM was created from install:install-file</description>
 </project>
