@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>fish.payara.docs.man</groupId>
+  <artifactId>batch-connector-manpage</artifactId>
+  <versioning>
+    <release>4.1.151</release>
+    <versions>
+      <version>4.1.151</version>
+    </versions>
+    <lastUpdated>20200810161628</lastUpdated>
+  </versioning>
+</metadata>
