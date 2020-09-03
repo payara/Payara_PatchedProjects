@@ -3,7 +3,7 @@
   <groupId>com.sun.woodstock</groupId>
   <artifactId>webui-jsf-suntheme</artifactId>
   <versioning>
-    <release>4.0.2.10.payara-p20</release>
+    <release>4.0.2.10.payara-p21</release>
     <versions>
       <version>4.0.2.10-payara-p1</version>
       <version>4.0.2.10.payara-p2</version>
@@ -26,7 +26,8 @@
       <version>4.0.2.10.payara-p18</version>
       <version>4.0.2.10.payara-p19</version>
       <version>4.0.2.10.payara-p20</version>
+      <version>4.0.2.10.payara-p21</version>
     </versions>
-    <lastUpdated>20200728134853</lastUpdated>
+    <lastUpdated>20200828152640</lastUpdated>
   </versioning>
 </metadata>
