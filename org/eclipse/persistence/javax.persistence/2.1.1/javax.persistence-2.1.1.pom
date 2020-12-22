@@ -27,7 +27,7 @@
   <version>2.1.1</version>
   <packaging>jar</packaging>
   <name>Javax Persistence</name>
-  <description>EclipseLink build based upon Git transaction eb82444a2b</description>
+  <description>EclipseLink build based upon Git transaction 8b2e28839c</description>
   <url>http://www.eclipse.org/eclipselink</url>
 
   <organization>
