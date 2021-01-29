@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.codehaus.cargo</groupId>
+  <artifactId>cargo-sample-maven2-tomcat7-context-test</artifactId>
+  <versioning>
+    <release>1.8.4.payara-p1</release>
+    <versions>
+      <version>1.8.4.payara-p1</version>
+    </versions>
+    <lastUpdated>20210129153345</lastUpdated>
+  </versioning>
+</metadata>
