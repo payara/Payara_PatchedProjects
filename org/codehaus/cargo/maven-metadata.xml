@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <plugins>
+    <plugin>
+      <name>Cargo Maven 2 Plugin</name>
+      <prefix>cargo</prefix>
+      <artifactId>cargo-maven2-plugin</artifactId>
+    </plugin>
+    <plugin>
+      <name>Cargo Maven Archetype demonstrating the Cargo Daemon</name>
+      <prefix>cargo-archetype-daemon</prefix>
+      <artifactId>cargo-archetype-daemon</artifactId>
+    </plugin>
+    <plugin>
+      <name>Cargo Maven Archetype Starting and Stopping Multiple Containers</name>
+      <prefix>cargo-archetype-multiple-containers</prefix>
+      <artifactId>cargo-archetype-multiple-containers</artifactId>
+    </plugin>
+    <plugin>
+      <name>Cargo Maven Archetype Single Webapp Module</name>
+      <prefix>cargo-archetype-webapp-single-module</prefix>
+      <artifactId>cargo-archetype-webapp-single-module</artifactId>
+    </plugin>
+    <plugin>
+      <name>Cargo Maven Archetype Webapp Functional Tests Module</name>
+      <prefix>cargo-archetype-webapp-functional-tests-module</prefix>
+      <artifactId>cargo-archetype-webapp-functional-tests-module</artifactId>
+    </plugin>
+    <plugin>
+      <name>Cargo Maven Archetype Webapp with DataSource</name>
+      <prefix>cargo-archetype-webapp-with-datasource</prefix>
+      <artifactId>cargo-archetype-webapp-with-datasource</artifactId>
+    </plugin>
+    <plugin>
+      <name>Cargo Maven Archetype demonstrating Remote Deployment</name>
+      <prefix>cargo-archetype-remote-deployment</prefix>
+      <artifactId>cargo-archetype-remote-deployment</artifactId>
+    </plugin>
+  </plugins>
+</metadata>

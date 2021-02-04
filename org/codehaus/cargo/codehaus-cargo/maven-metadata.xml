@@ -3,10 +3,11 @@
   <groupId>org.codehaus.cargo</groupId>
   <artifactId>codehaus-cargo</artifactId>
   <versioning>
-    <release>1.7.16.payara-p1</release>
+    <release>1.8.4.payara-p1</release>
     <versions>
       <version>1.7.16.payara-p1</version>
+      <version>1.8.4.payara-p1</version>
     </versions>
-    <lastUpdated>20200811233216</lastUpdated>
+    <lastUpdated>20210129153244</lastUpdated>
   </versioning>
 </metadata>
