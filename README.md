@@ -1,4 +1,20 @@
-Payara_PatchedProjects
+*** This Repository is now Read Only (Deprecated) ***
+Artifacts should not got to payara-artifacts repository in Payara Nexus
+```
+ <repository>
+    <id>payara-nexus-artifacts</id>
+    <name>Payara Nexus Artifacts</name>
+    <url>https://nexus.payara.fish/repository/payara-artifacts</url>
+    <releases>
+        <enabled>true</enabled>
+    </releases>
+    <snapshots>
+        <enabled>false</enabled>
+    </snapshots>
+</repository>
+```
+
+Deprecated Payara_PatchedProjects
 ======================
 
-A maven repository containing patched projects used by Payara. 
+Deprecated - A maven repository containing patched projects used by Payara. 
