@@ -1,4 +1,4 @@
-*** This Repository is now Read Only (Deprecated) ***
+# This Repository is now Read Only (Deprecated)
 Artifacts should not got to payara-artifacts repository in Payara Nexus
 ```
  <repository>
