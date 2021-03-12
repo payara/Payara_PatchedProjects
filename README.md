@@ -1,5 +1,7 @@
 # This Repository is now Read Only (Deprecated)
-New (and new versions of) Artifacts should now go to payara-artifacts repository in Payara Nexus (https://nexus.payara.fish)
+New (and new versions of) Artifacts should now be in payara-artifacts repository in Payara Nexus (https://nexus.payara.fish)
+However, existing versions of artifacts will still be in this repository,
+so most likely you will need to include both this and the nexus repository in your projects
 ```
  <repository>
     <id>payara-nexus-artifacts</id>
